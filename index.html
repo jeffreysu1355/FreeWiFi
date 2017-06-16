@@ -59,10 +59,10 @@
                     	<a class="page-scroll" href="#locations">Current Locations</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#download">Sign Up</a>
+                        <a class="page-scroll" href="register.html">Sign Up</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Log In</a>
+                        <a class="page-scroll" href="#" data-toggle="modal" data-target="#login-modal">Log In</a>
                     </li>
                 </ul>
             </div>
@@ -143,16 +143,16 @@
                   <thead>
                     <tr>
                         <th><em class="fa fa-cog"></em></th>
-                        <th class="hidden-xs">ID</th>
+                        <th class="hidden-xs">Location</th>
                         <th>Name</th>
-                        <th>Email</th>
+                        <th>Password</th>
                     </tr> 
                   </thead>
                   <tbody>
                           <tr>
                             <td align="center">
-                              <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                              <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                              <!-- <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
+                              <a class="btn btn-danger"><em class="fa fa-trash"></em></a> -->
                             </td>
                             <td class="hidden-xs">1</td>
                             <td>John Doe</td>
@@ -198,6 +198,24 @@
                 </ul>
             </div>
         </div>
+
+    <!-- Login Section -->
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Login to Your Account</h1><br>
+				  <form>
+					<input type="text" name="user" placeholder="Username">
+					<input type="password" name="pass" placeholder="Password">
+					<input type="submit" name="login" class="login loginmodal-submit" value="Login">
+				  </form>
+					
+				  <div class="login-help">
+					<a href="#">Register</a> - <a href="#">Forgot Password</a>
+				  </div>
+				</div>
+			</div>
+		  </div>
     </section>
 
     <!-- Map Section -->
