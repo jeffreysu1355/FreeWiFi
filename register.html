@@ -7,7 +7,7 @@
   
   
       <link rel="stylesheet" href="css/style.css">
-
+      <link rel="shortcut icon" href="wifi.ico" />
   
 </head>
 
@@ -51,6 +51,9 @@
 <script type="text/javascript">
 
 function handleSignUp() {
+      var bool = true;
+      var fname = document.getElementById('login-fname').value;
+      var lname= document.getElementById('login-lname').value;
       var email = document.getElementById('login-email').value;
       var password = document.getElementById('login-pass').value;
       if (email.length < 4 ) {
@@ -62,33 +65,42 @@ function handleSignUp() {
         return;
       }
       // Sign in with email and pass.
-      // [START createwithemail]
+      
       firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        // [START_EXCLUDE]
+        
         if (errorCode == 'auth/weak-password') {
           alert('The password is too weak.');
+          bool = false;
         } else {
           alert(errorMessage);
+          bool = false;
         }
         console.log(error);
-        // [END_EXCLUDE]
+        
       }).then(function () {
         var user = firebase.auth().currentUser;
-        if(user != null){
+        if(user != null && bool){
             //updateUserInfo([user.uid, name, email, 1], function(){
-                goToDashboard();
+                user.updateProfile({
+                  displayName: fname
+
+                }).then(function(){
+                    firebase.database().ref('users/' + user.uid).set({
+                        fName: fname,
+                        lName: lname,
+                        email: email
+                      }).then(function(){
+                          goToDashboard();
+                      });
+                });
             //})
+            
         }
     });
-
-      //window.location.href = "registered.html";
-      //console.log("hi")
-      //href = "registered.html"
-      // [END createwithemail]
-    }
+  }
 
 
 function initApp() {
@@ -140,20 +152,20 @@ function initApp() {
     };
 function goToDashboard(){
     console.log("Go to Dashboard");
-    window.location.href = "dashboard.html";
+    window.location.href = "index.html";
 }    
   </script>
 
-  <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
 <script>
   // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyAEvvk4JUpBH5dTcWStG3riLy3Q7e4cgX8",
-    authDomain: "test-2ab4f.firebaseapp.com",
-    databaseURL: "https://test-2ab4f.firebaseio.com",
-    projectId: "test-2ab4f",
-    storageBucket: "test-2ab4f.appspot.com",
-    messagingSenderId: "577570294935"
+    apiKey: "AIzaSyA4fv7-Y-0y4AzeR-Cjl_2URsIwSwDwg_c",
+    authDomain: "freewifi-62f22.firebaseapp.com",
+    databaseURL: "https://freewifi-62f22.firebaseio.com",
+    projectId: "freewifi-62f22",
+    storageBucket: "",
+    messagingSenderId: "1006997441299"
   };
   firebase.initializeApp(config);
 </script>

@@ -397,6 +397,7 @@ used to vertically center elements, may need modification if you're not using de
   text-align: center;
   font-size: 1.8em;
   font-family: roboto;
+  color: black;
 }
 
 .loginmodal-container input[type=submit] {
@@ -419,6 +420,7 @@ used to vertically center elements, may need modification if you're not using de
   padding: 0 8px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
+  color: black;
 }
 
 .loginmodal-container input[type=text]:hover, input[type=password]:hover {
