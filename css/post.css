@@ -150,6 +150,7 @@ textarea:hover {
   color: #e2dedb;
 }
 
+
 #submit {
   width: 502px;
   
@@ -165,8 +166,9 @@ textarea:hover {
   
   border: solid 1px #b3aca7;
   border-top: none;
+  text-align: center;
 }
 
-#submit:hover {
+hover #submit:hover {
   color: #e2dedb;
 }

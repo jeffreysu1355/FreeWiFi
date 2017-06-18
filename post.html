@@ -9,15 +9,35 @@
 <form id="form" class="topBefore">
 		
 		  <input id="name" type="text" placeholder="WIFI NAME">
-		  <input id="email" type="text" placeholder="PASSWORD">
+		  <input id="password" type="text" placeholder="PASSWORD">
 		  <textarea id="message" type="text" placeholder="LOCATION"></textarea>
-  <input id="submit" type="submit" value="GO!">
+  		  <input id="submit" value="GO!" onclick="goToDashboard()">
+  		<!-- <a id = "submit" type="submit" onclick="writeUserData()">GO!</a> -->
+  		<!--<button id="submit" value="GO!" onclick="goToDashboard()">GO!</button>-->
   
 </form>
 <script type="text/javascript">
 	
+	function writeUserData() {
 
+		var user = firebase.auth().currentUser;
+		var name = document.getElementById('name').value;
+		var password = document.getElementById('password').value;
+		var location = document.getElementById('message')
+  		firebase.database().ref('posts/' + user.uid).set({
+    		wifiname: name,
+    		wifipassword: password,
+    		wifilocation: location,
+    		
+  		}).then(function(){
+            goToDashboard();
+        });
+	}
 
+function goToDashboard(){
+    console.log("Go to Dashboard");
+    window.location.href = "member.html";
+}
 
 </script>
 
